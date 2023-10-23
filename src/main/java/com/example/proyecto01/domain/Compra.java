@@ -1,74 +1,46 @@
 package com.example.proyecto01.domain;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.util.List;
+import java.util.Date;
 
+@Entity
+@Table(name = "compra")
 public class Compra {
-    private String fecha_compra;
-    private String metodo_d_pago;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a GenerationType.IDENTITY para autoincrementar
     @Column(name = "id", nullable = false)
-    private Long ID;
 
-    private Cliente cliente;
+    private Long id;
+    private Date fecha_compra;
 
-    private List<Producto> productos;//se puede sacar el len del product para ver la cantidad
-    private String direccion;
+    private Long Monto_Total;
 
-    //geterss
+    private String metodo_de_pago;
 
+    public Compra(){}
 
-    public String getFecha_compra() {
-        return fecha_compra;
+    public Compra(Long id2, Date fecha_compra2, Long Monto_Total2, String metodo_de_pago2){
+        this.id = id2;
+        this.fecha_compra = fecha_compra2;
+        this.Monto_Total = Monto_Total2;
+        this.metodo_de_pago = metodo_de_pago2;
     }
 
-    public void setFecha_compra(String fecha_compra) {
-        this.fecha_compra = fecha_compra;
-    }
+    public Long getId(){ return id; }
+    public Date getFecha_compra(){ return fecha_compra; }
+    public Long getTotal_De_Compra(){ return Monto_Total; }
+    public String getMetodo_de_pago(){ return metodo_de_pago; }
 
-    public String getMetodo_d_pago() {
-        return metodo_d_pago;
-    }
+    public void setId(Long id){ this.id = id; }
+    public void setFecha_compra(Date fecha_compra){ this.fecha_compra = fecha_compra; }
+    public void setMonto_Total(Long Monto_Total){ this.Monto_Total = Monto_Total; }
+    public void setMetodo_de_pago(String metodo_de_pago){ this.metodo_de_pago = metodo_de_pago; }
 
-    public void setMetodo_d_pago(String metodo_d_pago) {
-        this.metodo_d_pago = metodo_d_pago;
-    }
-
-    public Long getID() {
-        return ID;
-    }
-
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 }
 
