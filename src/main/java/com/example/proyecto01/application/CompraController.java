@@ -19,13 +19,13 @@ public class CompraController {
     private CompraService compraService;
 
     @GetMapping
-    public ResponseEntity<List<Compra>> compras(){
+    public ResponseEntity<List<Compra>> AllCompras(){
         List<Compra> compras = compraService.getAllCompra();
         return new ResponseEntity<>(compras,HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<String> compra(@RequestBody Compra compra){
+    public ResponseEntity<String> PostCompra(@RequestBody Compra compra){
         compraService.saveCompra(compra);
         return ResponseEntity.status(201).body("Created");
     }
@@ -39,7 +39,7 @@ public class CompraController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<String> patchCliente(@PathVariable Long id, @RequestBody Compra compra){
+    public ResponseEntity<String> patchCompra(@PathVariable Long id, @RequestBody Compra compra){
         Optional<Compra> patchedCompra = compraService.patchCompra(id,compra);
         return patchedCompra.isPresent() ? ResponseEntity.status(200).body("Updated partially") :
                 ResponseEntity.status(404).body("Not Found");
@@ -47,7 +47,7 @@ public class CompraController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteCliente(@PathVariable Long id) {
+    public ResponseEntity<String> deleteCompra(@PathVariable Long id) {
         Optional<Compra> deletedCompra = compraService.deleteCompra(id);
         return deletedCompra.isPresent() ? ResponseEntity.status(200).body("Deleted") : ResponseEntity.status(404).body("Not Found");
     }
