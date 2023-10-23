@@ -34,7 +34,7 @@ public class Compra {
 
     public Long getId(){ return id; }
     public Date getFecha_compra(){ return fecha_compra; }
-    public Long getTotal_De_Compra(){ return Monto_Total; }
+    public Long getMonto_Total(){ return Monto_Total; }
     public String getMetodo_de_pago(){ return metodo_de_pago; }
 
     public void setId(Long id){ this.id = id; }
