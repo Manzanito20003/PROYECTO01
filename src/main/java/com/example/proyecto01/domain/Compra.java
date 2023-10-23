@@ -12,19 +12,19 @@ import java.util.Date;
 @Table(name = "compra")
 public class Compra {
 
+    //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a GenerationType.IDENTITY para autoincrementar
     @Column(name = "id", nullable = false)
 
+    //llave primaria
     private Long id;
     private Date fecha_compra;
-
     private Long Monto_Total;
-
     private String metodo_de_pago;
 
+    //Constructores
     public Compra(){}
-
     public Compra(Long id2, Date fecha_compra2, Long Monto_Total2, String metodo_de_pago2){
         this.id = id2;
         this.fecha_compra = fecha_compra2;
@@ -32,11 +32,13 @@ public class Compra {
         this.metodo_de_pago = metodo_de_pago2;
     }
 
+    //getters
     public Long getId(){ return id; }
     public Date getFecha_compra(){ return fecha_compra; }
     public Long getMonto_Total(){ return Monto_Total; }
     public String getMetodo_de_pago(){ return metodo_de_pago; }
 
+    //setters
     public void setId(Long id){ this.id = id; }
     public void setFecha_compra(Date fecha_compra){ this.fecha_compra = fecha_compra; }
     public void setMonto_Total(Long Monto_Total){ this.Monto_Total = Monto_Total; }

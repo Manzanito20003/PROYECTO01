@@ -9,10 +9,13 @@ import jakarta.persistence.Id;
 @Entity
 @Table(name = "cliente")
 public class Cliente {
+
+    //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a GenerationType.IDENTITY para autoincrementar
     @Column(name = "id", nullable = false)
 
+    //llave primaria
     private Long id;
     private String UserName;
     private String email;
@@ -20,6 +23,7 @@ public class Cliente {
     private Long cantidad_compras;//cantidad de compras acumuladas
     private String direccion;
 
+    //Constructores
     public Cliente(){}
     public Cliente(Long id2, String UserName2, String  email2, String contrasena2, Long cantidad_compras2, String direccion2){
         this.id = id2;
@@ -30,36 +34,23 @@ public class Cliente {
         this.direccion = direccion2;
     }
 
+    //getters
     public Long getId() {
         return id;
     }
-    public void setId(Long id) {
-        this.id = id;
-    }
     public String getContrasena(){ return contrasena; }
-    public void setContrasena(String contrasena){ this.contrasena = contrasena; }
     public String getUserName() {
         return UserName;
     }
-    public void setUserName(String UserName) {
-        this.UserName = UserName;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getDireccion() {
-        return direccion;
-    }
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-    public Long getCantidad_compras() {
-        return cantidad_compras;
-    }
-    public void setCantidad_compras(Long cantidad_compras) {
-        this.cantidad_compras = cantidad_compras;
-    }
+    public String getEmail() { return email; }
+    public String getDireccion() { return direccion; }
+    public Long getCantidad_compras() { return cantidad_compras; }
+
+    //setters
+    public void setId(Long id) { this.id = id; }
+    public void setContrasena(String contrasena){ this.contrasena = contrasena; }
+    public void setUserName(String UserName) { this.UserName = UserName; }
+    public void setEmail(String email) { this.email = email; }
+    public void setDireccion(String direccion) { this.direccion = direccion; }
+    public void setCantidad_compras(Long cantidad_compras) { this.cantidad_compras = cantidad_compras; }
 }

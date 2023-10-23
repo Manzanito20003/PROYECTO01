@@ -19,13 +19,13 @@ public class ClienteController {
     private ClienteService clienteService;
 
     @GetMapping
-    public ResponseEntity<List<Cliente>> clientes(){
+    public ResponseEntity<List<Cliente>> AllClientes(){
         List<Cliente> clientes = clienteService.getAllClient();
         return new ResponseEntity<>(clientes,HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<String> cliente(@RequestBody Cliente cliente){
+    public ResponseEntity<String> PostCliente(@RequestBody Cliente cliente){
         clienteService.saveCliente(cliente);
         return ResponseEntity.status(201).body("Created");
     }
