@@ -41,6 +41,7 @@ public class CompraService {
             if (compra.getMonto_Total() != null) {
                 existingCompra.setMonto_Total(compra.getMonto_Total());
             }
+
         }
         return optionalCompra;
     }

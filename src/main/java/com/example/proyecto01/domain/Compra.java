@@ -11,14 +11,11 @@ import java.util.List;
 
 @Entity
 @Table(name = "compra")
-public class Compra extends Cliente {
+public class Compra {
 
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a GenerationType.IDENTITY para autoincrementar
-    @Column(name = "id", nullable = false)
-
-
     //llave primaria
     private Long id;
     private Date fecha_compra;
@@ -26,7 +23,7 @@ public class Compra extends Cliente {
     private String metodo_de_pago;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
     //Constructores
@@ -44,13 +41,12 @@ public class Compra extends Cliente {
     public Float getMonto_Total(){ return monto_Total; }
     public String getMetodo_de_pago(){ return metodo_de_pago; }
 
+
     //setters
     public void setId(Long id){ this.id = id; }
     public void setFecha_compra(Date fecha_compra){ this.fecha_compra = fecha_compra; }
     public void setMonto_Total(Float Monto_Total){ this.monto_Total = Monto_Total; }
     public void setMetodo_de_pago(String metodo_de_pago){ this.metodo_de_pago = metodo_de_pago; }
-
-
 
 }
 

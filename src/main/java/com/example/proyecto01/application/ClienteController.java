@@ -1,13 +1,17 @@
 package com.example.proyecto01.application;
 
+
+import com.example.proyecto01.domain.Compra;
 import com.example.proyecto01.domain.Cliente;
 import com.example.proyecto01.Service.ClienteService;
+import com.example.proyecto01.Service.CompraService;
 import com.example.proyecto01.infrastracture.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +21,9 @@ public class ClienteController {
 
     @Autowired
     private ClienteService clienteService;
+
+     @Autowired
+     private ClienteRepository clienteRepository;
 
     @GetMapping
     public ResponseEntity<List<Cliente>> AllClientes(){
@@ -52,6 +59,16 @@ public class ClienteController {
         return deletedCliente.isPresent() ? ResponseEntity.status(200).body("Deleted") : ResponseEntity.status(404).body("Not Found");
     }
 
+    @PostMapping("/{id}/compra")
+    public ResponseEntity<String> realizarCompra(@PathVariable Long id, @RequestBody Compra compra) {
+        clienteService.realizarCompra(id, compra);
+        return ResponseEntity.ok("Compra realizada con éxito");
+    }
 
+    @DeleteMapping("/{id1}/{id2}/eliminar")
+    public ResponseEntity<String> EliminarCompra(@PathVariable Long id1, @PathVariable Long id2){
+        clienteService.eliminarCompraCliente(id1,id2);
+        return ResponseEntity.ok("Se elimino su registro de compra con exito!");
+    }
 
 }

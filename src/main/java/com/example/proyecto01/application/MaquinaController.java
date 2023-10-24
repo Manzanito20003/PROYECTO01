@@ -1,8 +1,10 @@
 package com.example.proyecto01.application;
 
 
+import com.example.proyecto01.domain.Compra;
 import com.example.proyecto01.domain.Maquina;
 import com.example.proyecto01.Service.MaquinaService;
+import com.example.proyecto01.domain.Producto;
 import com.example.proyecto01.infrastracture.MaquinaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,4 +53,18 @@ public class MaquinaController {
         Optional<Maquina> deletedMaquina = maquinaService.deleteMaquina(id);
         return deletedMaquina.isPresent() ? ResponseEntity.status(200).body("Deleted") : ResponseEntity.status(404).body("Not Found");
     }
+
+    @PostMapping("/{id}/producto")
+    public ResponseEntity<String> IngresarProducto(@PathVariable Long id, @RequestBody Producto producto) {
+        maquinaService.InventarioMaquina(id, producto);
+        return ResponseEntity.ok("Se añadio el producto con exito!");
+    }
+
+    @DeleteMapping("/{id1}/{id2}/eliminar")
+    public ResponseEntity<String> EliminarProductoMaquina(@PathVariable Long id1, @PathVariable Long id2){
+        maquinaService.eliminarMaquinaProducto(id1,id2);
+        return ResponseEntity.ok("Se elimino el producto de la maquina con exito!");
+    }
+
+
 }
