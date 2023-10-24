@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.util.List;
 
 @Entity
 @Table(name = "cliente")
@@ -22,6 +23,12 @@ public class Cliente {
     private String contrasena;
     private Long cantidad_compras;//cantidad de compras acumuladas
     private String direccion;
+
+    @ManyToMany
+    @JoinTable(name = "usuario_compra",
+            joinColumns = @JoinColumn(name = "usuario_id"),
+            inverseJoinColumns = @JoinColumn(name = "compra_id"))
+    private List<Compra> compras;
 
     //Constructores
     public Cliente(){}

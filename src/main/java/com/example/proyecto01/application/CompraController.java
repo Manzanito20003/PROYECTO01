@@ -1,7 +1,7 @@
 package com.example.proyecto01.application;
 
 import com.example.proyecto01.domain.Compra;
-import com.example.proyecto01.domain.CompraService;
+import com.example.proyecto01.Service.CompraService;
 import com.example.proyecto01.infrastracture.CompraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

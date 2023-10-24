@@ -1,7 +1,7 @@
 package com.example.proyecto01.application;
 
 import com.example.proyecto01.domain.Cliente;
-import com.example.proyecto01.domain.ClienteService;
+import com.example.proyecto01.Service.ClienteService;
 import com.example.proyecto01.infrastracture.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,9 +1,7 @@
 package com.example.proyecto01.application;
 
-import com.example.proyecto01.domain.Maquina;
-import com.example.proyecto01.domain.MaquinaService;
 import com.example.proyecto01.domain.Producto;
-import com.example.proyecto01.domain.ProductoService;
+import com.example.proyecto01.Service.ProductoService;
 import com.example.proyecto01.infrastracture.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
