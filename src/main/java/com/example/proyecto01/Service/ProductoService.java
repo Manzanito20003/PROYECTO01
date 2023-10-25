@@ -24,11 +24,12 @@ public class ProductoService {
         Optional<Producto> optionalProducto = productoRepository.findById(id);
         if(optionalProducto.isPresent()){
             Producto eixstingProducto = optionalProducto.get();
-            eixstingProducto.setDescripcion(producto.getDescripcion());
+            eixstingProducto.setNombre(producto.getNombre());
             eixstingProducto.setEstado(producto.getEstado());
             eixstingProducto.setImg(producto.getImg());
             eixstingProducto.setPrecio(producto.getPrecio());
             eixstingProducto.setStock(producto.getStock());
+            eixstingProducto.setFabricante(producto.getFabricante());
 
             productoRepository.save(eixstingProducto);
         }
@@ -39,8 +40,8 @@ public class ProductoService {
         Optional<Producto> optionalProducto = productoRepository.findById(id);
         if (optionalProducto.isPresent()) {
             Producto existingProducto = optionalProducto.get();
-            if (producto.getDescripcion() != null) {
-                existingProducto.setDescripcion(producto.getDescripcion());
+            if (producto.getNombre() != null) {
+                existingProducto.setNombre(producto.getNombre());
             }
             if (producto.getEstado() != null) { //maybe falla
                 existingProducto.setEstado(producto.getEstado());
@@ -53,6 +54,9 @@ public class ProductoService {
             }
             if (producto.getStock() != null) {
                 existingProducto.setStock(producto.getStock());
+            }
+            if (producto.getFabricante() != null){
+                existingProducto.setFabricante(producto.getFabricante());
             }
 
             productoRepository.save(existingProducto);

@@ -21,8 +21,11 @@ public class Maquina {
 
     //llave primaria
     private Long id;
+
+    @Column(name = "img", length = 600)
     private String img;
     private String ubicacion;
+    private String tipo;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "productos_id")
@@ -30,11 +33,12 @@ public class Maquina {
 
     //Constructores
     public Maquina(){}
-    public Maquina(Long id2, String img2, String ubicacion2, List<Producto> inventario2){
+    public Maquina(Long id2, String img2, String ubicacion2, List<Producto> inventario2, String tipo2){
         this.id = id2;
         this.img = img2;
         this.ubicacion = ubicacion2;
         this.inventario = inventario2;
+        this.tipo = tipo2;
     }
 
     //getters
@@ -42,10 +46,12 @@ public class Maquina {
     public String getImg(){ return img; }
     public String getUbicacion(){ return ubicacion; }
     public List<Producto> getInventario() { return inventario; }
+    public String getTipo() { return tipo; }
 
     //setters
     public void setId(Long id2){ this.id = id; }
     public void setImg(String img){ this.img = img; }
     public void setUbicacion(String ubicacion){ this.ubicacion = ubicacion; }
     public void setInventario(List<Producto> inventario2) { this.inventario = inventario2; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
 }
