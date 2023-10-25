@@ -24,6 +24,8 @@ public class CompraService {
             eixstingCompra.setFecha_compra(compra.getFecha_compra());
             eixstingCompra.setMetodo_de_pago(compra.getMetodo_de_pago());
             eixstingCompra.setMonto_Total(compra.getMonto_Total());
+
+            compraRepository.save(eixstingCompra);
         }
         return optionalCompra;
     }
@@ -42,6 +44,7 @@ public class CompraService {
                 existingCompra.setMonto_Total(compra.getMonto_Total());
             }
 
+            compraRepository.save(existingCompra);
         }
         return optionalCompra;
     }

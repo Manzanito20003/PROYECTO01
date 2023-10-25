@@ -41,6 +41,8 @@ public class ClienteService{
             existingCliente.setCantidad_compras(cliente.getCantidad_compras());
             existingCliente.setDireccion(cliente.getDireccion());
             existingCliente.setCompras(cliente.getCompras());
+
+            clienteRepository.save(existingCliente);
         }
         return optionalCliente;
     }
@@ -48,25 +50,27 @@ public class ClienteService{
     public Optional<Cliente> patchCliente(Long id,Cliente cliente) {
         Optional<Cliente> OptionalCliente = clienteRepository.findById(id);
         if (OptionalCliente.isPresent()) {
-            Cliente existingSong = OptionalCliente.get();
+            Cliente existingCliente = OptionalCliente.get();
             if (cliente.getUserName() != null) {
-                existingSong.setUserName(cliente.getUserName());
+                existingCliente.setUserName(cliente.getUserName());
             }
             if (cliente.getEmail() != null) {
-                existingSong.setEmail(cliente.getEmail());
+                existingCliente.setEmail(cliente.getEmail());
             }
             if (cliente.getContrasena() != null) {
-                existingSong.setContrasena(cliente.getContrasena());
+                existingCliente.setContrasena(cliente.getContrasena());
             }
             if (cliente.getCantidad_compras() != null) {
-                existingSong.setCantidad_compras(cliente.getCantidad_compras());
+                existingCliente.setCantidad_compras(cliente.getCantidad_compras());
             }
             if (cliente.getDireccion() != null) {
-                existingSong.setDireccion(cliente.getDireccion());
+                existingCliente.setDireccion(cliente.getDireccion());
             }
             if (cliente.getCompras() != null){
-                existingSong.setCompras(cliente.getCompras());
+                existingCliente.setCompras(cliente.getCompras());
             }
+
+            clienteRepository.save(existingCliente);
         }
         return OptionalCliente;
     }

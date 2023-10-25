@@ -24,11 +24,6 @@ public class Producto {
     private String descripcion;
     private Boolean estado; //booleano para convertir el "v" en disponible y el "f"  en agotado
 
-    @ManyToOne
-    @JoinColumn(name = "maquina_id")
-    private Maquina maquina;
-
-
     //Constructores
     public Producto(){}
     public Producto(Long id2, String img2, Long stock2, Float precio2, String descripcion2, Boolean estado2){

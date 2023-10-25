@@ -22,10 +22,6 @@ public class Compra {
     private Float monto_Total;
     private String metodo_de_pago;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
-
     //Constructores
     public Compra(){}
     public Compra(Long id2, Date fecha_compra2, Float Monto_Total2, String metodo_de_pago2){

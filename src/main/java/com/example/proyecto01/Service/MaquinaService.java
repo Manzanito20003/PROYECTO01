@@ -31,6 +31,7 @@ public class MaquinaService {
             eixstingMaquina.setUbicacion(maquina.getUbicacion());
             eixstingMaquina.setImg(maquina.getImg());
             eixstingMaquina.setInventario(maquina.getInventario());
+            maquinaRepository.save(eixstingMaquina);
         }
         return optionalMaquina;
     }
@@ -48,6 +49,7 @@ public class MaquinaService {
             if(maquina.getInventario() != null){
                 existingMaquina.setInventario(maquina.getInventario());
             }
+            maquinaRepository.save(existingMaquina);
         }
         return optionalMaquina;
     }

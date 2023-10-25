@@ -29,6 +29,8 @@ public class ProductoService {
             eixstingProducto.setImg(producto.getImg());
             eixstingProducto.setPrecio(producto.getPrecio());
             eixstingProducto.setStock(producto.getStock());
+
+            productoRepository.save(eixstingProducto);
         }
         return optionalProducto;
     }
@@ -52,6 +54,8 @@ public class ProductoService {
             if (producto.getStock() != null) {
                 existingProducto.setStock(producto.getStock());
             }
+
+            productoRepository.save(existingProducto);
         }
         return optionalProducto;
     }
