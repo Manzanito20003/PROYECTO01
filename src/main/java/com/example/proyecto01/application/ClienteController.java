@@ -22,9 +22,6 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
-     @Autowired
-     private ClienteRepository clienteRepository;
-
     @GetMapping
     public ResponseEntity<List<Cliente>> AllClientes(){
         List<Cliente> clientes = clienteService.getAllClient();

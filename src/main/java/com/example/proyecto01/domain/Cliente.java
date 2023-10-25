@@ -25,7 +25,7 @@ public class Cliente {
     private String direccion;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "compras_id")
+    @JoinColumn(name = "cliente_id")
     private List<Compra> compras;
 
 

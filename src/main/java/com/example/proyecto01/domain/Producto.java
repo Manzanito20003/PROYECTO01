@@ -24,6 +24,7 @@ public class Producto {
     private Boolean estado; //booleano para convertir el "v" en disponible y el "f"  en agotado
     private String fabricante;
 
+
     //Constructores
     public Producto(){}
     public Producto(Long id2, String img2, Long stock2, Float precio2, String nombre2, Boolean estado2, String fabricante2){

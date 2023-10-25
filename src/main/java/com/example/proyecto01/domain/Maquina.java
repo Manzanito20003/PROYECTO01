@@ -27,8 +27,9 @@ public class Maquina {
     private String ubicacion;
     private String tipo;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "productos_id")
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    //se declaro ManyToMany para que VARIAS maquinas compartan el mismo producto.
+    @JoinColumn(name = "maquina_id")
     private List<Producto> inventario;
 
     //Constructores
@@ -46,6 +47,7 @@ public class Maquina {
     public String getImg(){ return img; }
     public String getUbicacion(){ return ubicacion; }
     public List<Producto> getInventario() { return inventario; }
+
     public String getTipo() { return tipo; }
 
     //setters
@@ -53,5 +55,6 @@ public class Maquina {
     public void setImg(String img){ this.img = img; }
     public void setUbicacion(String ubicacion){ this.ubicacion = ubicacion; }
     public void setInventario(List<Producto> inventario2) { this.inventario = inventario2; }
+
     public void setTipo(String tipo) { this.tipo = tipo; }
 }

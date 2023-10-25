@@ -8,6 +8,7 @@ import com.example.proyecto01.domain.Producto;
 import com.example.proyecto01.infrastracture.MaquinaRepository;
 import com.example.proyecto01.infrastracture.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -62,6 +63,10 @@ public class MaquinaService {
         Optional<Maquina> optionalMaquina = maquinaRepository.findById(id);
         if (optionalMaquina.isPresent()) {
             Maquina existingMaquina = optionalMaquina.get();
+
+            existingMaquina.getInventario().clear(); //esto se hace para que cuando se elimine una maquina
+            //los productos que hay en el inventario de la maquina NO SE BORREN.
+
             maquinaRepository.delete(existingMaquina);
         }
         return optionalMaquina;
@@ -71,13 +76,25 @@ public class MaquinaService {
         return maquinaRepository.findById(id);
     }
 
-    public void InventarioMaquina(Long id, Producto producto) {
-        Maquina maquina = maquinaRepository.findById(id).orElseThrow(() -> new NoSuchElementException("No se encontró el cliente con ID: " + id));
-        List<Producto> productos = maquina.getInventario();
-        productos.add(producto);
-        maquina.setInventario(productos);
 
-        productoRepository.save(producto);
-        maquinaRepository.save(maquina);
+    public void AgregarProducto(Long id, Long id2){
+        Maquina maquina = maquinaRepository.findById(id).orElse(null);
+        Producto producto = productoRepository.findById(id2).orElse(null);
+
+        if (maquina != null && producto != null) {
+            if (!maquina.getInventario().contains(producto)) {
+                maquina.getInventario().add(producto);
+                maquinaRepository.save(maquina);
+            }
+        }
+    }
+
+    public void RemoverProducto(Long id, Long id2){
+        Maquina maquina = maquinaRepository.findById(id).orElse(null);
+        Producto producto = productoRepository.findById(id2).orElse(null);
+        if(maquina != null && producto != null){
+            maquina.getInventario().remove(producto);
+            maquinaRepository.save(maquina);
+        }
     }
 }
