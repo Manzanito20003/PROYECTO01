@@ -65,10 +65,4 @@ public class ClienteController {
         return ResponseEntity.ok("Compra realizada con éxito");
     }
 
-    @DeleteMapping("/{id1}/{id2}/eliminar")
-    public ResponseEntity<String> EliminarCompra(@PathVariable Long id1, @PathVariable Long id2){
-        clienteService.eliminarCompraCliente(id1,id2);
-        return ResponseEntity.ok("Se elimino su registro de compra con exito!");
-    }
-
 }

@@ -14,8 +14,6 @@ public class Producto {
     //atributos
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a GenerationType.IDENTITY para autoincrementar
-    @Column(name = "id", nullable = false)
-
     //llave primaria
     private Long id;
     private String img;

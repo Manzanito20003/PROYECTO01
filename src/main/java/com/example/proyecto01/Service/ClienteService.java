@@ -5,6 +5,7 @@ import com.example.proyecto01.application.ClienteController;
 import com.example.proyecto01.infrastracture.CompraRepository;
 import com.example.proyecto01.infrastracture.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.example.proyecto01.Service.CompraService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.NoSuchElementException;
@@ -93,21 +94,6 @@ public class ClienteService{
 
         compraRepository.save(compra);
         clienteRepository.save(cliente);
-    }
-
-    public void eliminarCompraCliente(Long idCliente, Long idCompra) {
-        Optional<Cliente> optionalCliente = clienteRepository.findById(idCliente);
-        if (optionalCliente.isPresent()) {
-            Cliente cliente = optionalCliente.get();
-            List<Compra> compras = cliente.getCompras();
-            Optional<Compra> optionalCompra = compras.stream().filter(compra -> compra.getId().equals(idCompra)).findFirst();
-            if (optionalCompra.isPresent()) {
-                compras.remove(optionalCompra.get());
-                cliente.setCompras(compras);
-                clienteRepository.save(cliente);
-                compraRepository.deleteById(idCompra);
-            }
-        }
     }
 
 }

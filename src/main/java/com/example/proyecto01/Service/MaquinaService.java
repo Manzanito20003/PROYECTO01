@@ -76,21 +76,4 @@ public class MaquinaService {
         productoRepository.save(producto);
         maquinaRepository.save(maquina);
     }
-
-    public void eliminarMaquinaProducto(Long idMaquina, Long idProducto) {
-        Optional<Maquina> optionalMaquina = maquinaRepository.findById(idMaquina);
-        if (optionalMaquina.isPresent()) {
-            Maquina maquina = optionalMaquina.get();
-            List<Producto> productos = maquina.getInventario();
-
-            //Verifica si el id existe para eliminar ese producto.
-            Optional<Producto> optionalProducto = productos.stream().filter(producto -> producto.getId().equals(idProducto)).findFirst();
-            if (optionalProducto.isPresent()) {
-                productos.remove(optionalProducto.get());
-                maquina.setInventario(productos);
-                maquinaRepository.save(maquina);
-                productoRepository.deleteById(idProducto); //elimina el producto por id
-            }
-        }
-    }
 }

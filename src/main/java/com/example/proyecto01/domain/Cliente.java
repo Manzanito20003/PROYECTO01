@@ -24,9 +24,9 @@ public class Cliente {
     private Long cantidad_compras;//cantidad de compras acumuladas
     private String direccion;
 
-        @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-        @JoinTable(name = "compras_id")
-        private List<Compra> compras;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "compras_id")
+    private List<Compra> compras;
 
 
     //Constructores
