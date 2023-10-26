@@ -1,9 +1,9 @@
 package com.example.proyecto01.Service;
 
 import com.example.proyecto01.domain.Producto;
-import com.example.proyecto01.application.ProductoController;
-import com.example.proyecto01.infrastracture.CompraRepository;
+
 import com.example.proyecto01.infrastracture.ProductoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

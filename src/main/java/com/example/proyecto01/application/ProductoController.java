@@ -1,16 +1,17 @@
 package com.example.proyecto01.application;
 
 import com.example.proyecto01.domain.Producto;
+
 import com.example.proyecto01.Service.ProductoService;
-import com.example.proyecto01.infrastracture.ProductoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
 @RestController
 @RequestMapping("/producto")
 public class ProductoController {
