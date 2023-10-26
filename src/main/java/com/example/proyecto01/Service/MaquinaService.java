@@ -1,18 +1,15 @@
 package com.example.proyecto01.Service;
 
-import com.example.proyecto01.domain.Cliente;
-import com.example.proyecto01.domain.Compra;
 import com.example.proyecto01.domain.Maquina;
-import com.example.proyecto01.application.MaquinaController;
 import com.example.proyecto01.domain.Producto;
+
 import com.example.proyecto01.infrastracture.MaquinaRepository;
 import com.example.proyecto01.infrastracture.ProductoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 @Service
 public class MaquinaService {

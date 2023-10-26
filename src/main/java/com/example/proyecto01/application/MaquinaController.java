@@ -1,21 +1,19 @@
 package com.example.proyecto01.application;
 
-
-import com.example.proyecto01.domain.Compra;
 import com.example.proyecto01.domain.Maquina;
+
 import com.example.proyecto01.Service.MaquinaService;
-import com.example.proyecto01.domain.Producto;
 import com.example.proyecto01.infrastracture.MaquinaRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.proyecto01.infrastracture.ProductoRepository;
-import com.example.proyecto01.infrastracture.MaquinaRepository;
 
 import java.util.List;
 import java.util.Optional;
-
 @RestController
 @RequestMapping("/maquina")
 public class MaquinaController {

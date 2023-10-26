@@ -1,13 +1,11 @@
 package com.example.proyecto01.domain;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "compra")

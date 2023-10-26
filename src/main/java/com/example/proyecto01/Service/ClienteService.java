@@ -1,20 +1,15 @@
 package com.example.proyecto01.Service;
+
 import com.example.proyecto01.domain.Cliente;
 import com.example.proyecto01.domain.Compra;
-import com.example.proyecto01.application.ClienteController;
+
 import com.example.proyecto01.infrastracture.CompraRepository;
 import com.example.proyecto01.infrastracture.ClienteRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.proyecto01.Service.CompraService;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
 import java.util.NoSuchElementException;
-
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,7 +80,6 @@ public class ClienteService{
         return optionalSong;
     }
 
-    //@Transactional
     public void realizarCompra(Long id, Compra compra) {
         Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new NoSuchElementException("No se encontró el cliente con ID: " + id));
         List<Compra> compras = cliente.getCompras();
