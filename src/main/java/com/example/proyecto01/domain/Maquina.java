@@ -9,30 +9,33 @@ import jakarta.persistence.Id;
 import java.util.List;
 
 @Entity
+
+//Nombre de la tabla de la clase.
 @Table(name = "maquina")
 public class Maquina {
 
-    //atributos
+    //Generando la llave primaria
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a GenerationType.IDENTITY para autoincrementar
     @Column(name = "id", nullable = false)
 
-
-    //llave primaria
     private Long id;
 
-    @Column(name = "img", length = 600)
+    //Los demás atributos
+    @Column(name = "img", length = 600) //Se usa esto para que la columna de String tenga un tamaño maximo de
+    //600 caracteres.
     private String img;
     private String ubicacion;
     private String tipo;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    //se declaro ManyToMany para que VARIAS maquinas compartan el mismo producto.
     @JoinColumn(name = "maquina_id")
     private List<Producto> inventario;
 
     //Constructores
     public Maquina(){}
+
+
     public Maquina(Long id2, String img2, String ubicacion2, List<Producto> inventario2, String tipo2){
         this.id = id2;
         this.img = img2;

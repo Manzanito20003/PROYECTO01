@@ -8,22 +8,29 @@ import jakarta.persistence.Id;
 import java.util.List;
 
 @Entity
+
+//Nombre de la tabla de la clase
 @Table(name = "cliente")
 public class Cliente {
 
-    //atributos
+
+    //Generación automatica de id autoincrementandose en 1 por cada cliente creado.
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a GenerationType.IDENTITY para autoincrementar
-    @Column(name = "id", nullable = false)
 
-    //llave primaria
+    //Nombre de la columna = id, y que id no almacene datos nulos (nullable = false).
+    @Column(name = "id", nullable = false) //
+
     private Long id;
+
+    //Los demas atributos
     private String username;
     private String email;
     private String contrasena;
-    private Long cantidad_compras;//cantidad de compras acumuladas
+    private Long cantidad_compras; //cantidad de compras acumuladas
     private String direccion;
 
+    //Un solo liente se almacene varias compras y que esas compras solo formen parte de ese cliente.
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "cliente_id")
     private List<Compra> compras;

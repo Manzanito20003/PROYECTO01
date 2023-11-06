@@ -8,17 +8,23 @@ import jakarta.persistence.Id;
 import java.util.Date;
 
 @Entity
+
+//nombre de la tabla de la clase.
 @Table(name = "compra")
 public class Compra {
 
-    //atributos
+    //Generando la llave primaria
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a GenerationType.IDENTITY para autoincrementar
-    //llave primaria
     private Long id;
+
+    //Los demas atributos
     private Date fecha_compra;
     private Float monto_Total;
     private String metodo_de_pago;
+
+    //No hay relación entre compra-cliente ya que no queremos una relación directa entre compra y el cliente.
+    //osea, no queremos que una compra almacene un cliente, pero si que un cliente almacene una compra.
 
     //Constructores
     public Compra(){}

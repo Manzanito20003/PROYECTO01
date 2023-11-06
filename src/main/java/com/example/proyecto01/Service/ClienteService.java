@@ -81,7 +81,8 @@ public class ClienteService{
     }
 
     public void realizarCompra(Long id, Compra compra) {
-        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new NoSuchElementException("No se encontró el cliente con ID: " + id));
+        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new
+                NoSuchElementException("No se encontró el cliente con ID: " + id));
         List<Compra> compras = cliente.getCompras();
         compras.add(compra);
         cliente.setCompras(compras);
