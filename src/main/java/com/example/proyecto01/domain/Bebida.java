@@ -23,6 +23,8 @@ public class Bebida extends Producto{
         this.tamano = tamano2;
     }
 
+
+
     //getters
     public String getTipo_bebida() { return tipo_bebida; }
     public Float getTamano() { return tamano; }
