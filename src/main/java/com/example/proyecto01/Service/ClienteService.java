@@ -3,6 +3,8 @@ package com.example.proyecto01.Service;
 import com.example.proyecto01.domain.Cliente;
 import com.example.proyecto01.domain.Compra;
 
+import com.example.proyecto01.domain.Maquina;
+import com.example.proyecto01.domain.Producto;
 import com.example.proyecto01.infrastracture.CompraRepository;
 import com.example.proyecto01.infrastracture.ClienteRepository;
 
@@ -79,16 +81,16 @@ public class ClienteService{
         }
         return optionalSong;
     }
+    public void AgregarCompra(Long id, Long id2){
+        Cliente cliente = clienteRepository.findById(id).orElse(null);
+        Compra compra = compraRepository.findById(id2).orElse(null);
 
-    public void realizarCompra(Long id, Compra compra) {
-        Cliente cliente = clienteRepository.findById(id).orElseThrow(() -> new
-                NoSuchElementException("No se encontró el cliente con ID: " + id));
-        List<Compra> compras = cliente.getCompras();
-        compras.add(compra);
-        cliente.setCompras(compras);
-
-        compraRepository.save(compra);
-        clienteRepository.save(cliente);
+        if (cliente != null && compra != null) {
+            if (!cliente.getCompras().contains(compra)) {
+                cliente.getCompras().add(compra);
+                clienteRepository.save(cliente);
+            }
+        }
     }
 
 }

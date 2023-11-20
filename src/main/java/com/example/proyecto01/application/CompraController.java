@@ -52,4 +52,10 @@ public class CompraController {
         return deletedCompra.isPresent() ? ResponseEntity.status(200).body("Deleted") : ResponseEntity.status(404).body("Not Found");
     }
 
+    @PostMapping("/añadir_compra/{id1}/{id2}")
+    public ResponseEntity<String> Añadir_Compra_Automaticamente(@PathVariable Long id1, @PathVariable Long id2){
+        compraService.Compra_Producto(id1,id2);
+        return ResponseEntity.ok("Se añadio el producto automaticamente a la compra realizada.");
+    }
+
 }

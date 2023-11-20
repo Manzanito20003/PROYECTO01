@@ -1,5 +1,6 @@
 package com.example.proyecto01.domain;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,46 +8,73 @@ import jakarta.persistence.Id;
 
 import java.util.Date;
 
+import java.util.List;
 @Entity
-
-//nombre de la tabla de la clase.
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler" }, allowSetters = true)
 @Table(name = "compra")
 public class Compra {
 
-    //Generando la llave primaria
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Cambiado a GenerationType.IDENTITY para autoincrementar
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    //Los demas atributos
     private Date fecha_compra;
     private Float monto_Total;
     private String metodo_de_pago;
 
-    //No hay relación entre compra-cliente ya que no queremos una relación directa entre compra y el cliente.
-    //osea, no queremos que una compra almacene un cliente, pero si que un cliente almacene una compra.
+    @JsonIdentityReference(alwaysAsId = true)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "producto_id")
+    private Producto producto;
 
-    //Constructores
-    public Compra(){}
-    public Compra(Long id2, Date fecha_compra2, Float Monto_Total2, String metodo_de_pago2){
-        this.id = id2;
-        this.fecha_compra = fecha_compra2;
-        this.monto_Total = Monto_Total2;
-        this.metodo_de_pago = metodo_de_pago2;
+    public Compra() {}
+
+    public Compra(Long id, Date fecha_compra, Float monto_Total, String metodo_de_pago, Producto producto) {
+        this.id = id;
+        this.fecha_compra = fecha_compra;
+        this.monto_Total = monto_Total;
+        this.metodo_de_pago = metodo_de_pago;
+        this.producto = producto;
     }
 
-    //getters
-    public Long getId(){ return id; }
-    public Date getFecha_compra(){ return fecha_compra; }
-    public Float getMonto_Total(){ return monto_Total; }
-    public String getMetodo_de_pago(){ return metodo_de_pago; }
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    //setters
-    public void setId(Long id){ this.id = id; }
-    public void setFecha_compra(Date fecha_compra){ this.fecha_compra = fecha_compra; }
-    public void setMonto_Total(Float Monto_Total){ this.monto_Total = Monto_Total; }
-    public void setMetodo_de_pago(String metodo_de_pago){ this.metodo_de_pago = metodo_de_pago; }
+    public Date getFecha_compra() {
+        return fecha_compra;
+    }
 
+    public void setFecha_compra(Date fecha_compra) {
+        this.fecha_compra = fecha_compra;
+    }
+
+    public Float getMonto_Total() {
+        return monto_Total;
+    }
+
+    public void setMonto_Total(Float monto_Total) {
+        this.monto_Total = monto_Total;
+    }
+
+    public String getMetodo_de_pago() {
+        return metodo_de_pago;
+    }
+
+    public void setMetodo_de_pago(String metodo_de_pago) {
+        this.metodo_de_pago = metodo_de_pago;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 }
-

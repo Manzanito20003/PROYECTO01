@@ -54,9 +54,9 @@ public class ClienteController {
         return deletedCliente.isPresent() ? ResponseEntity.status(200).body("Deleted") : ResponseEntity.status(404).body("Not Found");
     }
 
-    @PostMapping("/{id}/compra")
-    public ResponseEntity<String> realizarCompra(@PathVariable Long id, @RequestBody Compra compra) {
-        clienteService.realizarCompra(id, compra);
+    @PostMapping("/realizar_compra/{id}/{id2}")
+    public ResponseEntity<String> realizarCompra(@PathVariable Long id, @PathVariable Long id2) {
+        clienteService.AgregarCompra(id, id2);
         return ResponseEntity.ok("Compra realizada con éxito");
     }
 

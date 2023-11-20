@@ -1,8 +1,8 @@
 package com.example.proyecto01.Service;
 
+import com.example.proyecto01.Exception.ManejoErrores;
 import com.example.proyecto01.domain.Cafe;
 import com.example.proyecto01.domain.Snack;
-
 
 import com.example.proyecto01.infrastracture.SnackRepository;
 
@@ -79,6 +79,7 @@ public class SnackService {
             Snack existingSnack = optionalSnack.get();
             snackRepository.delete(existingSnack);
         }
+
         return optionalSnack;
     }
 }
